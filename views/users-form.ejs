@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+
+<header>
+<div class="grid-container">
+    <div class="grid-item"><h1>Reggie's TooDooLoo</h1></div>
+    <div class="grid-item"><img id="logo" src="/images/NicePng_check-mark-symbol-png_1328843.png" alt="logo"></div>
+    </div>
+    <div id="headerback1"></div>
+</header>
+
+<main>
+   <!-- <div class="grid-container1">
+    <div class="user-detail">
+        <div class="grid-item1">
+        <h2>What's New?</h2>
+        </div>
+        <div id="item2" class="grid-item1">
+        <form action="/users/create" method="POST">
+              <label>Task Name</label>
+              <input type="text" placeholder="Enter Your Task" id="taskname" name="task_name" required>
+        </div>
+        <div id="item3" class="grid-item1">
+              <label>Task Due By</label>
+              <input type="datetime-local" id="taskdue" name="task_due" required>
+        </div>
+              <button id="submit" type="submit">Add Task</button>
+              </form>
+            </div>
+            </div>
+
+        -->
+
+
+
+<div class="grid-container1">
+<div class="user-detail">
+<div class="grid-item1">
+    <h2>Change of Plans?</h2>
+</div>
+<div id="item2" class="grid-item1">
+    <form action="<%=(typeof editData!='undefined')?'/users/edit/'+editData.task_id:'/users/create'%>" method="POST">
+          <label>Task Name</label>
+          <input type="text" placeholder="Edit your task" id="taskname" name="task_name" required value="<%=(typeof editData!='undefined')? editData.task_name:''%>">
+    </div>
+    <div id="item3" class="grid-item1">
+          <label>Task Due By</label>
+          <input type="datetime-local" id="taskdue" name="task_due" required value="<%=(typeof editData!='undefined')? editData.task_due:''%>">
+          </div>
+          <button id="submit" type="submit">Add Task</button>
+        </form>
+</div>
+</div>

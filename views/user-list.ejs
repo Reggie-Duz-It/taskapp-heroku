@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reggie's TooDooLoo</title>
+    <link rel="icon" type="image/x-icon" href="/images/NicePng_check-mark-symbol-png_1328843.png" />
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+</head>
+<body>
+<header>
+    <div class="grid-container">
+    <div class="grid-item"><h1>Reggie's TooDooLoo</h1></div>
+    <div class="grid-item"><img id="logo" src="/images/NicePng_check-mark-symbol-png_1328843.png" alt="logo"></div>
+    </div>
+    <div id="headerback"></div>
+</header>
+
+<main>
+    <div class="grid-container1">
+    <div class="user-detail">
+        <div class="grid-item1">
+        <h2>What's New?</h2>
+        </div>
+        <div id="item2" class="grid-item1">
+        <form action="/users/create" method="POST">
+              <label>Task Name</label>
+              <input type="text" placeholder="Enter Your Task" id="taskname" name="task_name" required>
+        </div>
+        <div id="item3" class="grid-item1">
+              <label>Task Due By</label>
+              <input type="datetime-local" id="taskdue" name="task_due" required>
+        </div>
+              <button id="submit" type="submit">Add Task</button>
+              </form>
+            </div>
+            </div>
+            
+            <span id="sc"style="font-size: 3em; color: Tomato;" >
+            <i class="fa-solid fa-clipboard-list-check"></i>
+            </span>
+
+   <div class="grid-container2">
+    <div class="table-data">
+        <div id="taskhead" class="grid-item2">
+        <h2>Task List</h2>
+        <form action="/users/delete" method="POST">
+        </div>
+        <div class="grid-item2">
+        <table>
+           <tr>
+               <th>Task Name</th>
+               <th>Task Due</th>
+               <th>Task Check</th>
+               <th>Edit</th>
+           </tr> 
+<!---->    
+           <% 
+           if(userData.length != 0){
+           var i=1;
+           userData.forEach(function(data){
+           %> 
+           <tr>
+            <td><%=data.task_name %></td>
+            <td><%=data.task_due%></td>
+            <td><%=data.task_done %><input type="checkbox" id="task" name="task"  value="<%=data.task_id %>"></td>
+            <td><a href="/users/edit/<%=data.task_id%>"><button id="edit" type="button">Edit</button></a></td>
+            </tr>
+            <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+        
+    </table>
+    </div>
+    <button id="delete" type="submit">Remove Task</button>
+    </form>
+    </div>
+    </div>
+</main>
+    
+</body>
+</html>
